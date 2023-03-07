@@ -2,11 +2,7 @@ import streamlit as st
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
 from datetime import date
-
-
-import pymongo
 from pymongo import MongoClient
-#dfn = pd.DataFrame()
 st.markdown(
     """
     <style>
@@ -74,7 +70,7 @@ with model_training:
     dfn1= pd.DataFrame()
 
 
-    #@st.cache_data
+    
     def datascrape(query1):
         tweets_list1 = []
         for i, tweet in enumerate(sntwitter.TwitterSearchScraper(query1).get_items()):
@@ -87,7 +83,7 @@ with model_training:
             tweets_df1 = pd.DataFrame(tweets_list1,
                                       columns=['Datetime', 'Tweet Id', 'URL', 'Text', 'Username', 'Reply Count',
                                                'Retweet Count', 'Language', 'Source', 'Like Count'])
-        #st.write(tweets_df1)
+       
         return tweets_df1
     dfn = datascrape(query1)
 
@@ -111,14 +107,14 @@ with model_training:
             st.write(re)
             st.write("Data Uploaded to the Database")
 
-#with download:
+
     if st.session_state["button1"]:
         @st.cache_data
         def convert_df(df):
             # IMPORTANT: Cache the conversion to prevent computation on every rerun
             return df.to_csv().encode('utf-8')
 
-        #dfn2=datascrape(query1)
+      
         csv = convert_df(dfn)
 
         st.download_button(
@@ -135,7 +131,7 @@ with model_training:
             # IMPORTANT: Cache the conversion to prevent computation on every rerun
             return df.to_json().encode('utf-8')
 
-        #dfn2=datascrape(query1)
+       
         json = convert_df(dfn)
 
         st.download_button(
