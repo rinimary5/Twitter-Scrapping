@@ -50,7 +50,7 @@ with model_training:
                                     min_value=date(2006, 1, 12),
                                     max_value=date(2024, 3, 8))
     count=tweetlimit_col.number_input("Tweet Limit",min_value=100,max_value=10000,value=500,step=100)
-    #Session States for nested buttons
+#Session States for nested buttons
     if "button1" not in st.session_state:
         st.session_state["button1"] = False
     if "button2" not in st.session_state:
