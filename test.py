@@ -35,7 +35,6 @@ st.markdown(
     """,unsafe_allow_html=True
 )
 
-import urllib.request
 header=st.container()
 model_training=st.container()
 features=st.container()
